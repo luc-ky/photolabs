@@ -3,7 +3,8 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({ photos }) => {
+const PhotoList = (props) => {
+  const { photos, favouritePhotos, addFavourite, delFavourite } = props;
   const photoItems = photos.map((photo) => (
     <PhotoListItem
       username={photo.user.name}
@@ -11,6 +12,10 @@ const PhotoList = ({ photos }) => {
       hideUserName={photo.hideUserName}
       key={photo.id}
       id={photo.id}
+      favouritePhotos={favouritePhotos}
+      isFavourite={favouritePhotos.includes(photo.id)}
+      addFavourite={addFavourite}
+      delFavourite={delFavourite}
     />
   ));
 
