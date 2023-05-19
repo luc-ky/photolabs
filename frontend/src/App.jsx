@@ -1,15 +1,14 @@
 import React from "react";
 
-import PhotoListItem from "./components/PhotoListItem";
+import PhotoList from "./components/PhotoList";
 import "./App.scss";
 
 const App = () => {
-  const photos = new Array(3);
-  const renderedPhotos = photos
-    .fill(null)
-    .map((_, index) => <PhotoListItem key={index} />);
-
-  return <div className="App">{renderedPhotos}</div>;
+  return (
+    <div className="App">
+      <PhotoList />
+    </div>
+  );
 };
 
 export default App;
