@@ -12,8 +12,13 @@ const PhotoListItem = (props) => {
     isFavourite,
     favouritePhotos,
     addFavourite,
-    delFavourite
+    delFavourite,
+    onPhotoClick
   } = props;
+
+  const handleClick = () => {
+    onPhotoClick(id);
+  };
 
   return (
     <article className="photo-list--item">
@@ -28,6 +33,7 @@ const PhotoListItem = (props) => {
         src={imageSource}
         alt={`${username}'s photo`}
         className="photo-list--image"
+        onClick={handleClick}
       />
     </article>
   );
