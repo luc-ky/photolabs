@@ -18,6 +18,16 @@ const App = () => {
     setSelectedPhoto(null);
   };
 
+  const addFavourite = (photoId) => {
+    setFavouritePhotos((prevFavourites) => [...prevFavourites, photoId]);
+  };
+
+  const delFavourite = (photoId) => {
+    setFavouritePhotos((prevFavourites) =>
+      prevFavourites.filter((id) => id !== photoId)
+    );
+  };
+
   return (
     <div className="App">
       <HomeRoute
@@ -25,14 +35,18 @@ const App = () => {
         photos={photos}
         openModal={openModal}
         favouritePhotos={favouritePhotos}
-        setFavouritePhotos={setFavouritePhotos}
+        addFavourite={addFavourite}
+        delFavourite={delFavourite}
       />
       {selectedPhoto && (
         <PhotoDetailsModal
           photoId={selectedPhoto}
           photos={photos}
+          openModal={openModal}
           closeModal={closeModal}
           favouritePhotos={favouritePhotos}
+          addFavourite={addFavourite}
+          delFavourite={delFavourite}
         />
       )}
     </div>

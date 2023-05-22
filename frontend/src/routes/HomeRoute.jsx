@@ -6,19 +6,14 @@ import PhotoDetailsModal from "../routes/PhotoDetailsModal";
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
-  const { topics, photos, openModal } = props;
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-  const addFavourite = (photoId) => {
-    setFavouritePhotos((prevFavourites) => [...prevFavourites, photoId]);
-  };
-
-  const delFavourite = (photoId) => {
-    setFavouritePhotos((prevFavourites) =>
-      prevFavourites.filter((id) => id !== photoId)
-    );
-  };
+  const {
+    topics,
+    photos,
+    openModal,
+    favouritePhotos,
+    addFavourite,
+    delFavourite,
+  } = props;
 
   return (
     <div className="home-route">
