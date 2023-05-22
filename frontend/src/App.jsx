@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import HomeRoute from "./components/HomeRoute";
+import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import topics from "./mocks/topics.json";
 import photos from "./mocks/photos.json";
@@ -8,19 +8,33 @@ import "./App.scss";
 
 const App = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [favouritePhotos, setFavouritePhotos] = useState([]);
 
-  const handlePhotoClick = (photo) => {
+  const openModal = (photo) => {
     setSelectedPhoto(photo);
   };
 
-  const handleCloseModal = () => {
+  const closeModal = () => {
     setSelectedPhoto(null);
   };
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} onPhotoClick={handlePhotoClick} />
-      {selectedPhoto && <PhotoDetailsModal photo={selectedPhoto} onCloseModal={handleCloseModal} />}
+      <HomeRoute
+        topics={topics}
+        photos={photos}
+        openModal={openModal}
+        favouritePhotos={favouritePhotos}
+        setFavouritePhotos={setFavouritePhotos}
+      />
+      {selectedPhoto && (
+        <PhotoDetailsModal
+          photoId={selectedPhoto}
+          photos={photos}
+          closeModal={closeModal}
+          favouritePhotos={favouritePhotos}
+        />
+      )}
     </div>
   );
 };

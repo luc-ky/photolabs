@@ -13,11 +13,11 @@ const PhotoListItem = (props) => {
     favouritePhotos,
     addFavourite,
     delFavourite,
-    onPhotoClick
+    openModal
   } = props;
 
   const handleClick = () => {
-    onPhotoClick(id);
+    openModal(id);
   };
 
   return (
