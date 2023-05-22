@@ -12,15 +12,9 @@
   user-select: none;
   width: 300px;
   height: 200px;
-  object-fit: cover;
-}
-
-.photo-list--image {
   border-radius: 8px 8px 0px 0px;
-  user-select: none;
-  width: 300px;
-  height: 200px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .photo-list--user-profile {
