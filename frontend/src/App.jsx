@@ -25,6 +25,7 @@ const App = () => {
         topics={topics}
         photos={photos}
         openModal={openModal}
+        closeModal={closeModal}
         favouritePhotos={favouritePhotos}
         addFavourite={addFavourite}
         delFavourite={delFavourite}

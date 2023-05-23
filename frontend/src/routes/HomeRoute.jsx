@@ -14,7 +14,8 @@ const HomeRoute = (props) => {
     addFavourite,
     delFavourite,
     selectedTopic,
-    setSelectedTopic
+    setSelectedTopic,
+    closeModal
   } = props;
 
   return (
@@ -24,6 +25,7 @@ const HomeRoute = (props) => {
         favouritePhotos={favouritePhotos}
         selectedTopic={selectedTopic}
         setSelectedTopic={setSelectedTopic}
+        closeModal={closeModal}
       />
       <PhotoList
         photos={photos}

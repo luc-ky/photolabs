@@ -5,11 +5,12 @@ import FavBadge from "./FavBadge";
 import "../styles/TopNavigationBar.scss";
 
 const TopNavigation = (props) => {
-  const { topics, favouritePhotos, selectedTopic, setSelectedTopic } = props;
+  const { topics, favouritePhotos, selectedTopic, setSelectedTopic, closeModal } = props;
 
-  // function to reset active topic and show all photos if logo is clicked, then scroll to top
+  // function to reset active topic and show all photos if logo is clicked, close modal if open, then scroll to top
   const handleLogoClick = () => {
     setSelectedTopic(null);
+    closeModal();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   
