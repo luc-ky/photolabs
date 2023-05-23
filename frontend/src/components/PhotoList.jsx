@@ -4,17 +4,15 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  const { photos, favouritePhotos, addFavourite, delFavourite, openModal } = props;
+  const { photos, favouritePhotos, addFavourite, delFavourite, openModal, scrollToTop } = props;
 
   const photoItems = photos.map((photo) => (
     <PhotoListItem
       username={photo.user.username}
-      name={photo.user.name}
       city={photo.location.city}
       country={photo.location.country}
       imageSource={photo.urls.regular}
       userAvatar={photo.user.profile}
-      hideUserName={photo.hideUserName}
       key={photo.id}
       id={photo.id}
       favouritePhotos={favouritePhotos}
@@ -22,6 +20,7 @@ const PhotoList = (props) => {
       addFavourite={addFavourite}
       delFavourite={delFavourite}
       openModal={openModal}
+      scrollToTop={scrollToTop}
     />
   ));
 

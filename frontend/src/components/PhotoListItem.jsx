@@ -8,20 +8,21 @@ const PhotoListItem = (props) => {
     id,
     username,
     userAvatar,
-    name,
     city,
     country,
     imageSource,
-    hideUserName,
     isFavourite,
     favouritePhotos,
     addFavourite,
     delFavourite,
-    openModal
+    openModal,
+    scrollToTop
   } = props;
 
+  // function to open modal, then scroll to top
   const handleClick = () => {
     openModal(id);
+    scrollToTop();
   };
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "../components/PhotoList";
@@ -18,8 +18,16 @@ const PhotoDetailsModal = (props) => {
 
   const photo = photos.find((photo) => photo.id === photoId);
 
+  // scroll to top of modal
+  const modalRef = useRef(null);
+  const scrollToTop = () => {
+    if (modalRef.current) {
+      modalRef.current.scrollTo(0, 0);
+    }
+  };
+
   return (
-    <div className="photo-details-modal">
+    <div ref={modalRef} className="photo-details-modal">
       <button
         className="photo-details-modal--close-button"
         onClick={closeModal}
@@ -63,7 +71,7 @@ const PhotoDetailsModal = (props) => {
         <img
           className="photo-details-modal--image"
           src={photo.urls.full}
-          alt={photo.description}
+          alt={`${photo.user.username}'s photo`}
         />
       <div className="photo-details-modal--user-details">
         <img className="photo-details-modal--user-profile" src={photo.user.profile} alt="" />
@@ -82,6 +90,7 @@ const PhotoDetailsModal = (props) => {
         addFavourite={addFavourite}
         delFavourite={delFavourite}
         openModal={openModal}
+        scrollToTop={scrollToTop}
       />
     </div>
   );

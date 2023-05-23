@@ -7,8 +7,10 @@ import "../styles/TopicList.scss";
 const TopicList = (props) => {
   const { topics, selectedTopic, setSelectedTopic } = props;
 
+  // function to select active topic then scroll to top
   const handleTopicClick = (topic) => {
     setSelectedTopic(topic);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const topicItems = topics.map((topic) => (
@@ -17,7 +19,7 @@ const TopicList = (props) => {
       label={topic.title}
       link="#"
       onClick={() => handleTopicClick(topic)}
-      active={selectedTopic && selectedTopic === topic.id}
+      active={selectedTopic && selectedTopic === topic.id} // used to change styling for active topic
     />
   ));
 

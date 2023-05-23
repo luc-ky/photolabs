@@ -10,6 +10,7 @@ export const ACTIONS = {
   SET_SELECTED_TOPIC: "SET_SELECTED_TOPIC",
 };
 
+// reducer to update current state
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -51,6 +52,7 @@ function reducer(state, action) {
   }
 }
 
+// custom hook
 export default function useApplicationData() {
   const initialState = {
     selectedPhoto: null,
@@ -88,6 +90,7 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.SET_SELECTED_TOPIC, payload: { topic } });
   };
 
+  // fetch topic data and photo data from the API 
   useEffect(() => {
     axios
       .get("http://localhost:8001/api/topics")
@@ -101,6 +104,7 @@ export default function useApplicationData() {
         console.log("Error fetching topics:", error);
       });
 
+    // grab photo data from different endpoints depending on whether or not a topic has been selected
     let url = `http://localhost:8001/api/${
       state.selectedTopic ? `topics/photos/${state.selectedTopic}` : "photos"
     }`;
