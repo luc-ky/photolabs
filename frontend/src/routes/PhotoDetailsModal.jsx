@@ -13,7 +13,7 @@ const PhotoDetailsModal = (props) => {
     openModal,
     closeModal,
     photoId,
-    photos
+    photos,
   } = props;
 
   const photo = photos.find((photo) => photo.id === photoId);
@@ -62,18 +62,27 @@ const PhotoDetailsModal = (props) => {
         />
         <img
           className="photo-details-modal--image"
-          src={photo.urls.regular}
+          src={photo.urls.full}
           alt={photo.description}
         />
-        <header className="photo-details-modal--header">Similar Photos</header>
-        <PhotoList
-          photos={photos}
-          favouritePhotos={favouritePhotos}
-          addFavourite={addFavourite}
-          delFavourite={delFavourite}
-          openModal={openModal}
-        />
+      <div className="photo-details-modal--user-details">
+        <img className="photo-details-modal--user-profile" src={photo.user.profile} alt="" />
+        <div className="photo-details-modal--user-info">
+          {photo.user.username}
+          <div className="photo-details-modal--user-location">
+            {photo.location.city}, {photo.location.country}
+          </div>
+        </div>
       </div>
+      </div>
+      <header className="photo-details-modal--header">Similar Photos</header>
+      <PhotoList
+        photos={photo.similar_photos}
+        favouritePhotos={favouritePhotos}
+        addFavourite={addFavourite}
+        delFavourite={delFavourite}
+        openModal={openModal}
+      />
     </div>
   );
 };

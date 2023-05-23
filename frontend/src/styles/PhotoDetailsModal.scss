@@ -1,16 +1,20 @@
 .photo-details-modal {
   background-color: #f5f5f5;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
-  position: absolute;
+  position: fixed;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
-  height: 80%;
+  height: 95%;
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   scrollbar-width: thin;
   scrollbar-color: #999999 transparent;
+  z-index: 2;
 }
 
 .photo-details-modal::-webkit-scrollbar {
@@ -27,6 +31,8 @@
 }
 
 .photo-details-modal--close-button {
+  position: sticky;
+  top: 16px;
   background-color: #f5f5f5;
   border: none;
   color: white;
@@ -37,22 +43,38 @@
   cursor: pointer;
   margin-left: 16px;
   margin-top: 16px;
+  z-index: 3;
 }
 
 .photo-details-modal--images {
-  margin-left: 36px;
-  margin-top: 8px;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  margin: 24px;
+  padding: 8px;
+  border-width: 0.5px;
+  border-color: lightgray;
+  border-style: solid;
+  border-radius: 8px;
+  max-width: fit-content;
+  background-color: #ffffff;
 }
 
 .photo-details-modal--image {
-  max-width: 95%;
+  user-select: none;
+  max-width: 100%;
+  max-height: 980px;
   border-radius: 8px;
+  display: flex;
+  align-self: center;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
 .photo-details-modal--top-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   margin: 16px;
   margin-top: 8px;
   align-items: center;
@@ -63,11 +85,33 @@
   font-size: 16px;
 }
 
+.photo-details-modal--user-profile {
+  object-fit: cover;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.photo-details-modal--user-details {
+  display: flex;
+}
+
+.photo-details-modal--user-info {
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.photo-details-modal--user-location {
+  color: #838383;
+}
+
 .photo-details-modal--header {
   font-size: 18px;
   font-weight: 500;
   color: #1e1e1e;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  width: 90%;
+  margin-left: 26px;
 }

@@ -8,7 +8,7 @@ const TopNavigation = (props) => {
   const { topics, favouritePhotos, selectedTopic, setSelectedTopic } = props;
 
   const handleLogoClick = () => {
-    window.location.reload();
+    setSelectedTopic(null);
   };
   
   return (

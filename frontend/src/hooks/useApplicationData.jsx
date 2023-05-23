@@ -42,7 +42,7 @@ function reducer(state, action) {
     case ACTIONS.SET_SELECTED_TOPIC:
       return {
         ...state,
-        selectedTopic: action.payload.topic.id,
+        selectedTopic: action.payload.topic ? action.payload.topic.id : null,
       };
     default:
       throw new Error(
