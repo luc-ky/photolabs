@@ -9,6 +9,13 @@
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
   background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1200px;
+  width: 100%;
+  z-index: 999;
 }
 
 .top-nav-bar--logo {
@@ -18,4 +25,5 @@
   color: #111;
   text-underline-position: auto;
   margin-left: 24px;
+  cursor: pointer;
 }

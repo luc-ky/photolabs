@@ -3,21 +3,13 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
-  const { label, link } = props;
+  const { label, onClick, active } = props;
 
   return (
-    <div className="topic-list--item">
-      <a href={link}>
-        <span>{label}</span>
-      </a>
+    <div className={`topic-list--item ${active ? "active" : ""}`} onClick={onClick}>
+      <span>{label}</span>
     </div>
   );
-};
-
-TopicListItem.defaultProps = {
-  id: 1,
-  label: "Nature",
-  link: "link placeholder",
 };
 
 export default TopicListItem;

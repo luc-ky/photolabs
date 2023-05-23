@@ -13,11 +13,18 @@ const HomeRoute = (props) => {
     favouritePhotos,
     addFavourite,
     delFavourite,
+    selectedTopic,
+    setSelectedTopic
   } = props;
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favouritePhotos={favouritePhotos} />
+      <TopNavigationBar
+        topics={topics}
+        favouritePhotos={favouritePhotos}
+        selectedTopic={selectedTopic}
+        setSelectedTopic={setSelectedTopic}
+      />
       <PhotoList
         photos={photos}
         favouritePhotos={favouritePhotos}

@@ -14,7 +14,9 @@ const App = () => {
     openModal,
     closeModal,
     addFavourite,
-    delFavourite
+    delFavourite,
+    selectedTopic,
+    setSelectedTopic
   } = useApplicationData();
 
   return (
@@ -26,6 +28,8 @@ const App = () => {
         favouritePhotos={favouritePhotos}
         addFavourite={addFavourite}
         delFavourite={delFavourite}
+        selectedTopic={selectedTopic}
+        setSelectedTopic={setSelectedTopic}
       />
       {selectedPhoto && (
         <PhotoDetailsModal
