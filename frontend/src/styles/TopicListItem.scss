@@ -5,7 +5,6 @@
 
 .topic-list--item span {
   font-size: 18px;
-  text-decoration: none;
   font-weight: 500;
   color: #2b2b2b;
 
@@ -13,4 +12,8 @@
     text-decoration: overline;
     color: #111;
   }
+}
+
+.topic-list--item a {
+  text-decoration: none;
 }
