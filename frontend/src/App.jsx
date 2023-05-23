@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
-import topics from "./mocks/topics.json";
-import photos from "./mocks/photos.json";
 import "./App.scss";
 
 const App = () => {
   const {
+    topics,
+    photos,
     selectedPhoto,
     favouritePhotos,
     openModal,

@@ -1,11 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
   FAV_PHOTO_REMOVED: "FAV_PHOTO_REMOVED",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
-  DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS"
+  DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
 };
 
 function reducer(state, action) {
@@ -13,29 +13,29 @@ function reducer(state, action) {
     case ACTIONS.FAV_PHOTO_ADDED:
       return {
         ...state,
-        favouritePhotos: [...state.favouritePhotos, action.payload.photoId]
+        favouritePhotos: [...state.favouritePhotos, action.payload.photoId],
       };
     case ACTIONS.FAV_PHOTO_REMOVED:
       return {
         ...state,
         favouritePhotos: state.favouritePhotos.filter(
           (id) => id !== action.payload.photoId
-        )
+        ),
       };
     case ACTIONS.SET_PHOTO_DATA:
       return {
         ...state,
-        photos: action.payload.photos
+        photos: action.payload.photos,
       };
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
-        topics: action.payload.topics
+        topics: action.payload.topics,
       };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
       return {
         ...state,
-        selectedPhoto: action.payload.photoId
+        selectedPhoto: action.payload.photoId,
       };
     default:
       throw new Error(
@@ -49,17 +49,23 @@ export default function useApplicationData() {
     selectedPhoto: null,
     favouritePhotos: [],
     photos: [],
-    topics: []
+    topics: [],
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const openModal = (photo) => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { photoId: photo } });
+    dispatch({
+      type: ACTIONS.DISPLAY_PHOTO_DETAILS,
+      payload: { photoId: photo },
+    });
   };
 
   const closeModal = () => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { photoId: null } });
+    dispatch({
+      type: ACTIONS.DISPLAY_PHOTO_DETAILS,
+      payload: { photoId: null },
+    });
   };
 
   const addFavourite = (photoId) => {
@@ -70,6 +76,26 @@ export default function useApplicationData() {
     dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { photoId } });
   };
 
+  useEffect(() => {
+    fetch("http://localhost:8001/api/photos")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photos: data } });
+      })
+      .catch((error) => {
+        console.log("Error fetching photos:", error);
+      });
+
+    fetch("http://localhost:8001/api/topics")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics: data } });
+      })
+      .catch((error) => {
+        console.log("Error fetching topics:", error);
+      });
+  }, []);
+
   return {
     selectedPhoto: state.selectedPhoto,
     favouritePhotos: state.favouritePhotos,
@@ -78,6 +104,6 @@ export default function useApplicationData() {
     openModal,
     closeModal,
     addFavourite,
-    delFavourite
+    delFavourite,
   };
 }
