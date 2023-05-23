@@ -8,8 +8,12 @@ const PhotoList = (props) => {
 
   const photoItems = photos.map((photo) => (
     <PhotoListItem
-      username={photo.user.name}
+      username={photo.user.username}
+      name={photo.user.name}
+      city={photo.location.city}
+      country={photo.location.country}
       imageSource={photo.urls.regular}
+      userAvatar={photo.urls.small}
       hideUserName={photo.hideUserName}
       key={photo.id}
       id={photo.id}

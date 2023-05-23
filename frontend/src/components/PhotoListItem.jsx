@@ -7,6 +7,10 @@ const PhotoListItem = (props) => {
   const {
     id,
     username,
+    userAvatar,
+    name,
+    city,
+    country,
     imageSource,
     hideUserName,
     isFavourite,
@@ -35,6 +39,15 @@ const PhotoListItem = (props) => {
         className="photo-list--image"
         onClick={handleClick}
       />
+      <div className="photo-list--user-details">
+        <img className="photo-list--user-profile" src={userAvatar} alt="" />
+        <div className="photo-list--user-info">
+          {username}
+          <div className="photo-list--user-location">
+            {city}, {country}
+          </div>
+        </div>
+      </div>
     </article>
   );
 };
