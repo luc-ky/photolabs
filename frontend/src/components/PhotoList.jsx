@@ -13,7 +13,7 @@ const PhotoList = (props) => {
       city={photo.location.city}
       country={photo.location.country}
       imageSource={photo.urls.regular}
-      userAvatar={photo.urls.small}
+      userAvatar={photo.user.profile}
       hideUserName={photo.hideUserName}
       key={photo.id}
       id={photo.id}

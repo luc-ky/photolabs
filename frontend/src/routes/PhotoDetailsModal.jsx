@@ -62,7 +62,7 @@ const PhotoDetailsModal = (props) => {
         />
         <img
           className="photo-details-modal--image"
-          src={photo.urls.small}
+          src={photo.urls.regular}
           alt={photo.description}
         />
         <header className="photo-details-modal--header">Similar Photos</header>
